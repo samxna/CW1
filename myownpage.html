@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+
+/* After learning how to implement an imgage gallery from https://www.w3schools.com/howto/howto_js_tab_img_gallery.asp , 
+I decidided to use it in my portfolio to showcase my paintings. */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial;
+  background-color: linen;
+}
+
+img {
+  width:100%;
+}
+
+.column {
+  float: left;
+  width: 25%;
+  padding: 10px;
+}
+
+/* Style the images inside the grid */
+.column img {
+  opacity: 1; 
+  cursor: pointer; 
+}
+
+.column img:hover {
+  opacity: 0.8;
+}
+
+/* Expanding image text */
+#imgtext {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  color: white;
+  font-size: 20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* The expanding image container */
+.container {
+  size: 50%;
+  display: 50px;
+}
+
+h1 {
+  font-size: 60px;
+  word-break: break-all;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 40px;
+}
+
+p {
+  font-size: 30px;
+  text-align: center; 
+  font-family: Georgia, 'Times New Roman', Times, serif
+}
+
+figcaption {
+  font-family: georgia; 
+  font-weight: normal;
+  font-size: 25px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="main">
+
+<h1>Welcome to my Humble Abode 🎨 </h1>
+<hr color="rosybrown"> 
+
+<h2>Samina Ahmed's Decor Portfolio</h2>
+<p>Outside of studies, I hold a colossal passion for art which keeps me at ease and helps me to release any stress. One of my hobbies include creating décor, from calligraphic display canvases to wedding decorations, and recently interior designing for my new home. Below are some recent canvas decor that I have created over the summer. <br><br> <b> Click on an image and scroll down to view it close up! </p>
+</style>
+</head>
+<body>
+
+<figure>
+<div class="row">
+  <div class="column">
+    <img src="decor/green1.jpeg" onclick="myFunction(this);">
+  </div>
+
+  <div class="column">
+    <img src="decor/green2.jpg"  onclick="myFunction(this);">
+  </div>
+
+  <div class="column">
+    <img src="decor/green3.jpg" onclick="myFunction(this);"><figcaption> <br>This is a 60 x 85 canvas that says 'Alhamdulillah' which means 'Praise be to God'. It is an Islamic terminology which is often used to express appreciation and thanks to God. <br><br> This took me approximately 4 hours in total to create and it is currently hanging in my new home, in the reception area. </figcaption>
+  </div>
+
+  <div class="column">
+    <img src="decor/green4.jpg" onclick="myFunction(this);">
+  </div>
+
+</div>
+<div class="column">
+  <img src="decor/green5.jpg" onclick="myFunction(this);">
+</div>
+
+<div class="column">
+  <img src="decor/pink3.jpg" onclick="myFunction(this);"><figcaption> <br> For one of my best friend's 18th birthday, I made her a 60 x 20 canvas with her favourite Islamic quote; <br> <br><i>'The pen has been lifted, and the ink has dried'. </i><br><br> This verse offers the peace and serenity for us as Muslims to continue with our lives safe with the knowledge that God knows best. It reassures us that God is in charge. He sees the big picture since we are not able to see past the immediate challenges we face. <br><br> This took me about 6 hours to complete and is one of my favourite pieces so far! </figcaption>
+</div>
+
+<div class="column">
+  <img src="decor/pink2.jpg" onclick="myFunction(this);">
+</div>
+
+<div class="column">
+  <img src="decor/pink4.jpg" onclick="myFunction(this);">
+</div>
+
+<div class="column">
+    <img src="decor/pink5.jpg" onclick="myFunction(this);">
+  </div>
+
+  <div class="column">
+    <img src="decor/pink8.jpg" onclick="myFunction(this);">
+  </div>
+
+  <div class="column">
+    <img src="decor/pink7.jpg" onclick="myFunction(this);">
+  </div>
+
+  <div class="column">
+    <img src="decor/white1.jpg" onclick="myFunction(this);"><figcaption> <br> This super cute mini 15 x 10 canvas was a special request by one of my friends to replace one of her damaged decor that had the same quote. It says, <br> <br> <i>'In this world and the hereafter'. </i><br><br> According to Islam, the present world is not an eternal abode. The Quran tells us that man is placed here only temporarily, so that his moral fibre may be tested in terms of his obedience to God’s will. He must always remember that there will be the life hereafter, or 'Akhirat' as it is known in Islamic terminology. 
+  </div>
+
+  <div class="column">
+    <img src="decor/white2.jpg" onclick="myFunction(this);">
+  </div>
+
+  <div class="column">
+    <img src="decor/white3.jpg" onclick="myFunction(this);">
+  </div>
+
+</figure>
+
+<div class="container">
+  <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+  <img id="expandedImg" style="width:100%">
+  <div id="imgtext"></div>
+</div>
+
+<!-- After learning how to implement image enlarging functions from https://www.w3schools.com/ , I decidided to use it on my own page
+to showcase the pictures. Therefore the below was inspired from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_tab_img_gallery -->>
+
+<script>
+function myFunction(imgs) {
+  var expandImg = document.getElementById("expandedImg");
+  var imgText = document.getElementById("imgtext");
+  expandImg.src = imgs.src;
+  imgText.innerHTML = imgs.alt;
+  expandImg.parentElement.style.display = "block";
+}
+
+</script>
+
+</body>
+</html>
